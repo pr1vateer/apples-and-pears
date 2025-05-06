@@ -24,8 +24,11 @@ jobs:
       with:
         go-version: '1.24.2'
 
-    - name: Build
+    - name: Build Linux
       run: go build -o apples-and-pears_linux_amd64
+
+    - name: Build Windows
+      run: env GOOS=windows GOARCH=amd64 go build -o apples-and-pears.exe
 
     - name: Upload binaries to release
       uses: ncipollo/release-action@v1
